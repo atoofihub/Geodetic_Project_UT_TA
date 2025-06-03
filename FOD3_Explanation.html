@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>توضیح طراحی مرتبه اول شبکه ژئودتیک (FOD3)</title>
+    <link rel="stylesheet" href="./assets/katex.min.css">
+    <script src="./assets/katex.min.js"></script>
+    <script src="./assets/auto-render.min.js"></script>
+    <link rel="stylesheet" href="./assets/bootstrap-5.2.3/css/bootstrap.min.css">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --background-color: #ecf0f1;
+            --text-color: #2c3e50;
+            --border-color: #ddd;
+        }
+        body {
+            font-family: 'Tahoma', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        h1, h2, h3 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        .calculation-step {
+            margin: 20px 0;
+            padding: 15px;
+            border-right: 4px solid var(--secondary-color);
+            background-color: #f8f9fa;
+        }
+        .parameter-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        .parameter-table th, .parameter-table td {
+            padding: 12px;
+            border: 1px solid var(--border-color);
+            text-align: right;
+        }
+        .parameter-table th {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+        .formula {
+            background-color: #f8f9fa;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+            font-family: 'Courier New', monospace;
+        }
+        .note {
+            background-color: #fff3cd;
+            border-right: 4px solid #ffc107;
+            padding: 15px;
+            margin: 10px 0;
+        }
+        .result {
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-6">
+              <img src="./assets/ut_logo.png" alt="University of Tehran Logo" class="img-fluid" style="max-height: 100px; margin-bottom: 20px" />
+            </div>
+            <div class="col-6" style="text-align: left;">
+              <img src="./assets/fanni_logo.png" alt="College of Engineering Logo" class="img-fluid" style="max-height: 100px; margin-top: 0px; transform: scale(1.2)" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 text-center">
+                <h1>توضیح طراحی مرتبه اول شبکه ژئودتیک (FOD3)</h1>
+            </div>
+        </div>
+
+        <div class="calculation-step">
+            <h2>جدول مشاهدات شبکه</h2>
+            <p>در این شبکه، مشاهدات زیر انجام شده است:</p>
+            <table class="parameter-table">
+                <thead>
+                    <tr>
+                        <th>شماره مشاهده</th>
+                        <th>نوع مشاهده</th>
+                        <th>نقاط</th>
+                        <th>توضیحات</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>1</td><td>طول</td><td>1-2</td><td>فاصله بین نقاط 1 و 2</td></tr>
+                    <tr><td>2</td><td>طول</td><td>1-3</td><td>فاصله بین نقاط 1 و 3</td></tr>
+                    <tr><td>3</td><td>طول</td><td>1-4</td><td>فاصله بین نقاط 1 و 4</td></tr>
+                    <tr><td>4</td><td>طول</td><td>1-5</td><td>فاصله بین نقاط 1 و 5</td></tr>
+                    <tr><td>5</td><td>طول</td><td>1-6</td><td>فاصله بین نقاط 1 و 6</td></tr>
+                    <tr><td>6</td><td>طول</td><td>2-3</td><td>فاصله بین نقاط 2 و 3</td></tr>
+                    <tr><td>7</td><td>طول</td><td>2-4</td><td>فاصله بین نقاط 2 و 4</td></tr>
+                    <tr><td>8</td><td>طول</td><td>2-5</td><td>فاصله بین نقاط 2 و 5</td></tr>
+                    <tr><td>9</td><td>طول</td><td>2-6</td><td>فاصله بین نقاط 2 و 6</td></tr>
+                    <tr><td>10</td><td>طول</td><td>3-4</td><td>فاصله بین نقاط 3 و 4</td></tr>
+                    <tr><td>11</td><td>طول</td><td>3-5</td><td>فاصله بین نقاط 3 و 5</td></tr>
+                    <tr><td>12</td><td>طول</td><td>3-6</td><td>فاصله بین نقاط 3 و 6</td></tr>
+                    <tr><td>13</td><td>طول</td><td>4-5</td><td>فاصله بین نقاط 4 و 5</td></tr>
+                    <tr><td>14</td><td>طول</td><td>4-6</td><td>فاصله بین نقاط 4 و 6</td></tr>
+                    <tr><td>15</td><td>طول</td><td>5-6</td><td>فاصله بین نقاط 5 و 6</td></tr>
+                    <tr><td>16</td><td>طول</td><td>1-2</td><td>فاصله بین نقاط 1 و 2 (تکراری)</td></tr>
+                    <tr><td>17</td><td>طول</td><td>2-3</td><td>فاصله بین نقاط 2 و 3 (تکراری)</td></tr>
+                    <tr><td>18</td><td>طول</td><td>3-4</td><td>فاصله بین نقاط 3 و 4 (تکراری)</td></tr>
+                    <tr><td>19</td><td>طول</td><td>1-4</td><td>فاصله بین نقاط 1 و 4 (تکراری)</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="calculation-step">
+            <h2>مختصات اولیه نقاط شبکه (x0)</h2>
+            <p>مقادیر اولیه نقاط شبکه به صورت زیر است:</p>
+            <p style="direction:ltr; text-align:center;">$$
+            x_0 = \begin{bmatrix}
+            1 & 80 & 120 \\
+            2 & 120 & 180 \\
+            3 & 180 & 180 \\
+            4 & 160 & 120 \\
+            5 & 130 & 140 \\
+            6 & 150 & 140
+            \end{bmatrix}
+            $$</p>
+        </div>
+
+        <div class="calculation-step">
+            <h2>مختصات تقریبی اولیه برای بهینه‌سازی (x00)</h2>
+            <p>مقادیر اولیه تقریبی برای شروع فرآیند بهینه‌سازی:</p>
+            <p style="direction:ltr; text-align:center;">$$
+            x_{00} = \begin{bmatrix}
+            1 & 60 & 100 \\
+            2 & 80 & 160 \\
+            3 & 140 & 180 \\
+            4 & 160 & 80 \\
+            5 & 130 & 140 \\
+            6 & 150 & 140
+            \end{bmatrix}
+            $$</p>
+        </div>
+
+        <div class="calculation-step">
+            <h2>ماتریس وزن مشاهدات (P)</h2>
+            <p>در این پروژه، فرض شده است که تمام مشاهدات دارای وزن برابر هستند، بنابراین ماتریس وزن به صورت همانی است:</p>
+            <p style="direction:ltr; text-align:center;">$$
+            P = I_{19 \times 19}
+            $$</p>
+        </div>
+
+        <div class="calculation-step">
+            <h2>توضیح الگوریتم بهینه‌سازی شبکه</h2>
+            <p>
+                هدف الگوریتم، یافتن آرایش هندسی بهینه نقاط شبکه است به گونه‌ای که کمترین عدد آزادی (Redundancy Number) در بین تمام مشاهدات بیشینه شود.<br>
+                مراحل الگوریتم به شرح زیر است:
+            </p>
+            <ol>
+                <li><b>تعریف فضای جستجو:</b> مختصات اولیه چهار نقطه اول شبکه (نقاط 1 تا 4) در بازه‌ای به اندازه ±20 واحد در هر دو راستای X و Y با گام 20 واحد تغییر داده می‌شوند.</li>
+                <li><b>تولید حالت‌های مختلف:</b> با استفاده از حلقه‌های تو در تو، تمام ترکیب‌های ممکن مختصات نقاط 1 تا 4 تولید می‌شود.<br>
+                هر نقطه (مثلاً نقطه 1) می‌تواند سه مقدار مختلف در راستای X و سه مقدار مختلف در راستای Y داشته باشد (مثلاً 60، 80، 100 برای X و 100، 120، 140 برای Y).<br>
+                بنابراین برای هر نقطه 9 حالت داریم و برای 4 نقطه مجموعاً \(3^8 = 6561\) حالت مختلف خواهیم داشت.<br>
+                حلقه‌های تو در تو به این صورت عمل می‌کنند که ابتدا مقدار X و Y نقطه 1 را انتخاب می‌کنند، سپس مقدار X و Y نقطه 2 و ... تا نقطه 4، و برای هر ترکیب، الگوریتم ادامه می‌یابد.<br>
+                <b>مثال:</b> فرض کنید فقط نقاط 1 و 2 را تغییر دهیم (هر کدام 3 مقدار X و 3 مقدار Y دارند)، در این صورت \(3^4 = 81\) حالت مختلف خواهیم داشت که هر حالت یک ترکیب از مختصات نقاط 1 و 2 است.<br>
+                این روش تضمین می‌کند که تمام آرایش‌های ممکن بررسی شوند و بهترین حالت انتخاب شود.
+                </li>
+                <li><b>تشکیل ماتریس طرح (A):</b> برای هر حالت، با توجه به نوع و نقاط هر مشاهده، ماتریس طرح محاسبه می‌شود.<br>
+                برای مشاهدات طول:
+                <br>
+                <span style="direction:ltr; display:block; text-align:center;">$$
+                \frac{\partial L_{ij}}{\partial x_i} = -\frac{x_j-x_i}{l_{ij}}, \quad
+                \frac{\partial L_{ij}}{\partial y_i} = -\frac{y_j-y_i}{l_{ij}}, \quad
+                \frac{\partial L_{ij}}{\partial x_j} = \frac{x_j-x_i}{l_{ij}}, \quad
+                \frac{\partial L_{ij}}{\partial y_j} = \frac{y_j-y_i}{l_{ij}}
+                $$</span>
+                </li>
+                <li><b>محاسبه ماتریس آزادی (R):</b> با استفاده از رابطه زیر، ماتریس آزادی محاسبه می‌شود:<br>
+                <p style="direction:ltr; text-align:center;">$$
+                R = I - A (A^T P A + H^T H)^{-1} A^T P
+                $$</p>
+                که در آن:
+                <ul>
+                  <li>R: ماتریس آزادی (Redundancy Matrix)</li>
+                  <li>I: ماتریس واحد با ابعاد برابر تعداد مشاهدات</li>
+                  <li>A: ماتریس طرح (Design Matrix)</li>
+                  <li>P: ماتریس وزن مشاهدات</li>
+                  <li>H: ماتریس محدودیت‌ها (در صورت وجود)</li>
+                </ul>
+                </li>
+                <li><b>ارزیابی معیار بهینگی:</b> کمترین مقدار قطر اصلی ماتریس آزادی (کمترین عدد آزادی) به عنوان معیار بهینگی در نظر گرفته می‌شود.</li>
+                <li><b>به‌روزرسانی بهترین حالت:</b> اگر مقدار معیار بهینگی حالت فعلی از حالت‌های قبلی بهتر باشد، مختصات و نتایج مربوط به این حالت ذخیره می‌شود.</li>
+                <li><b>خروجی نهایی:</b> پس از اتمام جستجو، بهترین آرایش هندسی و مقادیر نهایی اعداد آزادی گزارش می‌شود.</li>
+            </ol>
+            <p>
+                این الگوریتم به دلیل بررسی تمام حالت‌های ممکن، تضمین می‌کند که بهترین حالت ممکن (از نظر معیار تعریف‌شده) انتخاب شود، اما با افزایش تعداد نقاط یا افزایش بازه جستجو، زمان محاسباتی به شدت افزایش می‌یابد.<br>
+                در این پروژه، به دلیل تعداد محدود نقاط و مشاهدات، این روش عملی و قابل اجراست.
+            </p>
+        </div>
+
+        <div class="calculation-step">
+            <h2>مفاهیم اصلی</h2>
+            
+            <h3>1. ماتریس طرح (Design Matrix)</h3>
+            <p>ماتریس طرح (A) نشان‌دهنده رابطه بین مشاهدات و پارامترهای مجهول است:</p>
+            <p style="text-align:center; direction:ltr;">$$A = \begin{bmatrix} \frac{\partial L_1}{\partial x_1} & \frac{\partial L_1}{\partial y_1} & \cdots & \frac{\partial L_1}{\partial x_n} & \frac{\partial L_1}{\partial y_n} \\ \frac{\partial L_2}{\partial x_1} & \frac{\partial L_2}{\partial y_1} & \cdots & \frac{\partial L_2}{\partial x_n} & \frac{\partial L_2}{\partial y_n} \\ \vdots & \vdots & \ddots & \vdots & \vdots \\ \frac{\partial L_m}{\partial x_1} & \frac{\partial L_m}{\partial y_1} & \cdots & \frac{\partial L_m}{\partial x_n} & \frac{\partial L_m}{\partial y_n} \end{bmatrix}$$</p>
+
+            <h3>2. ماتریس وزن (Weight Matrix)</h3>
+            <p>ماتریس وزن P نشان‌دهنده دقت مشاهدات است:</p>
+            <p style="text-align:center; direction:ltr;">$$P = \begin{bmatrix} \frac{1}{\sigma_1^2} & 0 & \cdots & 0 \\ 0 & \frac{1}{\sigma_2^2} & \cdots & 0 \\ \vdots & \vdots & \ddots & \vdots \\ 0 & 0 & \cdots & \frac{1}{\sigma_m^2} \end{bmatrix}$$</p>
+
+            <h3>3. ماتریس آزادی (Redundancy Matrix)</h3>
+            <p>ماتریس آزادی R نشان‌دهنده درجه آزادی شبکه است:</p>
+            <p style="text-align:center; direction:ltr;">$$R = I - A(A^TPA + H^TH)^{-1}A^TP$$</p>
+
+            <h3>4. اعداد آزادی (Redundancy Numbers)</h3>
+            <p>اعداد آزادی از قطر اصلی ماتریس آزادی به دست می‌آیند:</p>
+            <p style="text-align:center; direction:ltr;">$$r_i = R_{ii}$$</p>
+        </div>
+
+        <div class="note">
+            <strong>نکته مهم:</strong> این الگوریتم به صورت خودکار تمام ترکیب‌های ممکن را بررسی می‌کند و بهترین حالت را انتخاب می‌کند. زمان اجرا به تعداد نقاط و دقت جستجو بستگی دارد.
+        </div>
+    </div>
+
+    <script src="./assets/tex-mml-chtml.js"></script>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          displayMath: [['$$', '$$'], ['\\[', '\\]']]
+        },
+        options: { renderActions: { addMenu: [] } }
+      };
+    </script>
+</body>
+</html> 
